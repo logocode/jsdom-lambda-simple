@@ -1,0 +1,36 @@
+service: esbuild-test
+
+plugins:
+  - serverless-esbuild
+
+provider:
+  architecture: arm64
+  deploymentMethod: direct
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 512
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    packagerOptions:
+      exclude:
+        - "node_modules/canvas/**"
+        - "node_modules/canvas"
+        - "canvas/**"
+        - "canvas"
+      patterns:
+        - "!node_modules/canvas/**"
+    exclude:
+      - "aws-sdk"
+      - "canvas"
+      - "pdf-visual-diff"
+    external:
+      - canvas
+      - jsdom
+
+functions:
+  helloWorld:
+    handler: src/test.handler

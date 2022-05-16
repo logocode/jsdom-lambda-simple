@@ -1,0 +1,16 @@
+{
+  "name": "esbuild-test",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "sls package && unzip .serverless/esbuild-test -d .serverless/esbuild-test && ls -la .serverless/esbuild-test/node_modules|grep canvas"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "jsdom": "19.0.0"
+  },
+  "devDependencies": {
+    "pdf-visual-diff": "0.6.0",
+    "serverless": "3.17.0",
+    "serverless-esbuild": "1.27.1"
+  }
+}
